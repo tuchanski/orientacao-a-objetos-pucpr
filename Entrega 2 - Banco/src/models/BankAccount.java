@@ -2,6 +2,8 @@ package models;
 
 public class BankAccount {
 
+    // This is a way to auto-generate the ID - Of course it would not work in a big
+    // system.
     private static Long bankIdCounter = 0L;
 
     private Long id;
