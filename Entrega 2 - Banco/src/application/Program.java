@@ -41,7 +41,6 @@ public class Program {
                         System.out.println("\nInvalid option.");
                 }
 
-
             } catch (InputMismatchException e) {
                 System.out.println("\nInvalid input. Please enter a valid number.");
                 input.nextLine();
@@ -53,8 +52,6 @@ public class Program {
     }
 
     private static void printMenu() {
-
-
         System.out.println("\n- Central Bank of Lapa PR -");
         System.out.println("[1] - Register User");
         System.out.println("[2] - Withdraw");
