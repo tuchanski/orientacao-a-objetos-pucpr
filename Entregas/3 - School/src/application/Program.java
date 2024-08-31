@@ -1,7 +1,12 @@
 package application;
 
-import models.*;
 import models.enums.Gender;
+import models.managers.StudentManager;
+import models.managers.SubjectManager;
+import models.school.School;
+import models.school.Student;
+import models.school.Subject;
+import models.school.Teacher;
 
 import java.util.Scanner;
 
@@ -25,33 +30,32 @@ public class Program {
 
             switch (choice){
                 case 1:
-                    System.out.println("\n- Enroll New Student -");
                     studentManager.enrollNewStudent();
                     break;
                 case 2:
-                    System.out.println("\n- Get All Subjects -");
                     subjectManager.getAllSubjects();
                     break;
                 case 3:
-                    System.out.println("\n- Get Enrolled Students by Subject -");
                     studentManager.getEnrolledStudentsBySubject();
                     break;
                 case 4:
-                    System.out.println("\n- Get Subject -");
                     subjectManager.getSubject();
                     break;
                 case 5:
-                    System.out.println("\n- Get Enrolled Student -");
-                    studentManager.getEnrolledStudentByIdOrName();
+                    studentManager.getEnrolledStudent();
                     break;
                 case 6:
-                    System.out.println("\n- Update Student Info -");
                     studentManager.updateEnrolledStudent();
+                case 0:
+                    break;
                 default:
                     System.out.println("\nInvalid choice");
             }
 
         } while (choice != 0);
+
+        System.out.println("The program has been finished.");
+        input.close();
 
     }
 
@@ -60,7 +64,7 @@ public class Program {
     private static void displayMenu() {
         System.out.println(
                 """
-                        \n- School System -\n
+                        \n- School System -
                         [1] - Enroll Student
                         [2] - Get all Subjects
                         [3] - Get enrolled students by Subject

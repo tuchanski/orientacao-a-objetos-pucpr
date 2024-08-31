@@ -1,9 +1,8 @@
-package models;
+package models.school;
 
 
 import models.enums.Gender;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 public class Student {
@@ -69,7 +68,8 @@ public class Student {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", gender=" + gender +
+                ", email='" + email + '\'' +
                 '}';
     }
-
 }

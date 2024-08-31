@@ -1,4 +1,4 @@
-package models;
+package models.school;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,8 +78,7 @@ public class Subject {
         return "Subject{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", teacher=" + teacher +
-                ", students=" + students +
+                ", teacher=" + teacher.getName() +
                 '}';
     }
 }

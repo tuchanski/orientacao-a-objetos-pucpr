@@ -1,4 +1,4 @@
-package models;
+package models.school;
 
 
 import models.enums.Gender;
@@ -16,7 +16,6 @@ public class Teacher {
     private Gender gender;
     private String email;
 
-    // ONE-TO-MANY RELATIONSHIP
     private List<Subject> subjects;
 
     public Teacher(String name, Gender gender, String email) {
@@ -96,8 +95,11 @@ public class Teacher {
     @Override
     public String toString() {
         return "Teacher{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender=" + gender +
+                ", email='" + email + '\'' +
+                ", subjects=" + subjects +
                 '}';
     }
 }

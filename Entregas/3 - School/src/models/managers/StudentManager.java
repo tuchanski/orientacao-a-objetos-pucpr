@@ -1,5 +1,8 @@
-package models;
+package models.managers;
 
+import models.school.School;
+import models.school.Student;
+import models.school.Subject;
 import models.enums.Gender;
 
 import java.util.List;
@@ -18,7 +21,7 @@ public class StudentManager {
         try {
             System.out.print("\nEnter student name: ");
             String name = input.nextLine();
-            System.out.print("\nEnter student gender: ");
+            System.out.print("\nEnter student gender (Male, Female or Other): ");
             String gender = input.nextLine();
             System.out.print("\nEnter student email: ");
             String email = input.nextLine();
@@ -29,8 +32,8 @@ public class StudentManager {
             System.out.print("\nChoose a subject to enroll: ");
             String subject = input.nextLine();
 
-            school.enrollToSubject(subject.toUpperCase(), newStudent);
             school.addStudent(newStudent);
+            school.enrollToSubject(subject.toUpperCase(), newStudent);
 
         } catch (IllegalArgumentException e) {
             System.out.println("\nError: " + e.getMessage());
@@ -56,11 +59,11 @@ public class StudentManager {
 
     }
 
-    public Student getEnrolledStudentByIdOrName(){
+    public Student getEnrolledStudent(){
 
         List<Student> studentList = school.getStudents();
 
-        System.out.println("[1] - Search by ID\n[2] - Search by name");
+        System.out.println("\n[1] - Search by ID\n[2] - Search by name");
         System.out.print("\nChoose here: ");
         int choice = input.nextInt();
 
@@ -73,36 +76,40 @@ public class StudentManager {
         if (choice == 1) {
             System.out.print("\nEnter the ID: ");
             int id = input.nextInt();
-
-            for (Student student : studentList) {
-                if (student.getId() == id) {
-                    System.out.println("\n" + student);
-                    return student;
-                }
-            }
-        }
-
-        if (choice == 2) {
+            return getEnrolledStudentById(id, studentList);
+        } else {
             System.out.print("\nEnter the name: ");
             String name = input.nextLine();
-            for (Student student : studentList) {
-                if (student.getName().equalsIgnoreCase(name)) {
-                    System.out.println("\n" + student);
-                    return student;
-                }
+            return getEnrolledStudentByName(name, studentList);
+        }
+    }
+
+    private Student getEnrolledStudentById(int id, List<Student> studentList) {
+        for (Student student : studentList) {
+            if (student.getId() == id) {
+                System.out.println("\n" + student);
+                return student;
             }
         }
-
-        System.out.println("\nStudent not found");
+        System.out.println("\nError: Student not found");
         return null;
+    }
 
-
+    private Student getEnrolledStudentByName(String name, List<Student> studentList) {
+        for (Student student : studentList) {
+            if (student.getName().equalsIgnoreCase(name)) {
+                System.out.println("\n" + student);
+                return student;
+            }
+        }
+        System.out.println("\nError: Student not found");
+        return null;
     }
 
     public void updateEnrolledStudent(){
 
         List<Student> studentList = school.getStudents();
-        Student student = getEnrolledStudentByIdOrName();
+        Student student = getEnrolledStudent();
 
         if (student != null) {
 
@@ -120,18 +127,19 @@ public class StudentManager {
 
                 switch (choice) {
                     case 1:
-                        System.out.println("Enter new name: ");
+                        System.out.print("\nEnter new name: ");
                         String name = input.nextLine();
                         student.setName(name);
                         System.out.println("Student name has been updated: " + student.getName());
                         break;
                     case 2:
-                        System.out.println("Enter new gender: ");
+                        System.out.print("\nEnter new gender: ");
                         Gender gender = Gender.valueOf(input.nextLine().toUpperCase());
                         student.setGender(gender);
                         System.out.println("Student gender has been updated: " + student.getGender());
+                        break;
                     case 3:
-                        System.out.println("Enter new email: ");
+                        System.out.print("\nEnter new email: ");
                         String email = input.nextLine();
                         for (Student enrolled : studentList) {
                             if (enrolled.getEmail().equalsIgnoreCase(email)) {
@@ -142,9 +150,11 @@ public class StudentManager {
                         student.setEmail(email);
                         System.out.println("Student email has been updated: " + student.getEmail());
                         break;
-
+                    case 0:
+                        break;
                     default:
                         System.out.println("Invalid choice");
+                        break;
                 }
             } while (choice != 0);
 

@@ -1,4 +1,4 @@
-package models;
+package models.school;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +37,8 @@ public class School {
 
     public void addStudent(Student student){
         for (Student enrolled : this.students){
-            if (enrolled.equals(student)){
-                throw new IllegalArgumentException("Student already enrolled");
+            if (enrolled.getId().equals(student.getId())){
+                throw new IllegalArgumentException("Student already registered");
             }
             if (enrolled.getEmail().equals(student.getEmail())){
                 throw new IllegalArgumentException("E-mail already registered");
@@ -108,7 +108,5 @@ public class School {
         }
         return true;
     }
-
-
 
 }
