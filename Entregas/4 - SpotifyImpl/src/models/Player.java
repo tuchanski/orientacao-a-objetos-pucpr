@@ -7,7 +7,7 @@ import models.exceptions.NonRegisteredMusicException;
 
 public class Player {
 
-    private MusicStatus status = MusicStatus.IDLE;
+    private static MusicStatus status = MusicStatus.IDLE;
     private Playlist inQueue;
 
     public Player(Playlist inQueue) {
@@ -34,7 +34,7 @@ public class Player {
         playMusic(musicDuration);
     }
 
-    private void playMusic(Duration time) {
+    private static void playMusic(Duration time) {
         while (!time.isZero()) {
             try {
                 status = MusicStatus.PLAYING;
