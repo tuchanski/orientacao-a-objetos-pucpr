@@ -2,7 +2,6 @@ package models;
 
 import java.time.Duration;
 
-import models.enums.Author;
 import models.enums.Genre;
 
 public class Music {
@@ -11,7 +10,7 @@ public class Music {
 
     private Long id;
     private String name;
-    private Author author;
+    private String author;
     private Genre genre;
     private Duration time;
 
@@ -20,7 +19,7 @@ public class Music {
         idCounter++;
         this.id = idCounter;
         this.name = name;
-        this.author = Author.valueOf(author);
+        this.author = author;
         this.genre = Genre.valueOf(genre);
         this.time = convertToDuration(time);
     }
@@ -45,11 +44,11 @@ public class Music {
         this.name = name;
     }
 
-    public Author getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(Author author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 

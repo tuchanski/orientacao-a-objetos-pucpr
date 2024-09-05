@@ -2,18 +2,23 @@ package models;
 
 import java.time.Duration;
 
+import models.enums.MusicStatus;
 import models.exceptions.NonRegisteredMusicException;
 
 public class Player {
 
+    private MusicStatus status = MusicStatus.IDLE;
     private Playlist inQueue;
 
     public Player(Playlist inQueue) {
         this.inQueue = inQueue;
     }
-    
-    public void startPlayer() throws NonRegisteredMusicException {
 
+    public MusicStatus getStatus() {
+        return status;
+    }
+
+    public void startPlayer() throws NonRegisteredMusicException {
         if (this.inQueue.getMusics().isEmpty()) {
             throw new NonRegisteredMusicException("The playlist is empty.");
         }
@@ -29,20 +34,23 @@ public class Player {
         playMusic(musicDuration);
     }
 
-    private static void playMusic(Duration time) {
+    private void playMusic(Duration time) {
         while (!time.isZero()) {
             try {
+                status = MusicStatus.PLAYING;
                 Thread.sleep(1000);
+                System.out.print(time.toSeconds() + "sec... ");
+                time = time.minus(Duration.ofSeconds(1));
             } catch (InterruptedException e) {
+                status = MusicStatus.PAUSED;
                 System.out.println("The music has been stopped.");
                 return;
             }
-            System.out.print(time.toSeconds() + "sec... ");
-            time = time.minus(Duration.ofSeconds(1));
         }
-        
-        if (time.isZero()){
+
+        if (time.isZero()) {
             System.out.println("\nThe music has been finished.");
+            status = MusicStatus.IDLE;
         }
     }
 }
