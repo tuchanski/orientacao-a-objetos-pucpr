@@ -40,6 +40,9 @@ public class Player {
             System.out.print(time.toSeconds() + "sec... ");
             time = time.minus(Duration.ofSeconds(1));
         }
-        System.out.println("\nThe music has been finished.");
+        
+        if (time.isZero()){
+            System.out.println("\nThe music has been finished.");
+        }
     }
 }
