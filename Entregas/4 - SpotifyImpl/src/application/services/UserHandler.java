@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class UserHandler {
     public static void registerNewUser(Scanner input, Sys system) {
         System.out.print("\nEnter username: ");
-        String username = input.nextLine();
+        String username = input.nextLine().toLowerCase();
         System.out.print("Enter password: ");
         String password = input.nextLine();
 
@@ -20,7 +20,7 @@ public class UserHandler {
 
     public static void loginUser(Scanner input, Sys system) {
         System.out.print("\nEnter username: ");
-        String username = input.nextLine();
+        String username = input.nextLine().toLowerCase();
         System.out.print("Enter password: ");
         String password = input.nextLine();
 

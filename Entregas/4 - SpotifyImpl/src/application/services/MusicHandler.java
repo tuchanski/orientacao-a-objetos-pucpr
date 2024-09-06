@@ -35,8 +35,10 @@ public class MusicHandler {
         getAvailableMusics(system);
 
         System.out.print("\nEnter the title of the music to be added: ");
-        String musicTitle = input.nextLine();
-        Music musicToAdd = system.findMusicByTitle(musicTitle);
+        String musicTitle = input.nextLine().toUpperCase();
+        System.out.print("\nEnter the name of the author of music to be added: ");
+        String authorName = input.nextLine().toUpperCase();
+        Music musicToAdd = system.findMusicByTitleAndAuthor(musicTitle, authorName);
 
         if (musicToAdd != null) {
             List<Playlist> playlists = system.listPlaylists(currentUser);
@@ -47,7 +49,6 @@ public class MusicHandler {
                 if (chosenPlaylist != null) {
                     try {
                         system.addMusicToPlaylist(musicToAdd, chosenPlaylist);
-                        System.out.println("\nMusic added to playlist.");
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }

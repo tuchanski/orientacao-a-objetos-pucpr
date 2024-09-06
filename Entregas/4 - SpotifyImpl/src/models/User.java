@@ -11,7 +11,7 @@ public class User {
     public User(String username, String password){
         idCounter++;
         this.id = idCounter;
-        this.username = username;
+        this.username = username.toLowerCase();
         this.password = password;
     }
 

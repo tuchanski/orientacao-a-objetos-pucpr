@@ -54,7 +54,7 @@ public class Playlist {
             }
         }
         this.musics.add(music);
-        System.out.println("Music " + music.getName() + " registered in Playlist with ID" + this.id + " successfully.");
+        System.out.println("Music " + music.getName() + " registered in Playlist with ID " + this.id + " successfully.");
     }
 
     public void removeMusic(Music music) throws NonRegisteredMusicException {

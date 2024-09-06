@@ -18,9 +18,9 @@ public class Music {
     public Music(String name, String author, String genre, String time) {
         idCounter++;
         this.id = idCounter;
-        this.name = name;
-        this.author = author;
-        this.genre = Genre.valueOf(genre);
+        this.name = name.toUpperCase();
+        this.author = author.toUpperCase();
+        this.genre = Genre.valueOf(genre.toUpperCase());
         this.time = convertToDuration(time);
     }
 

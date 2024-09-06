@@ -24,6 +24,7 @@ public class Program {
             }
         }
         input.close();
+        System.out.println("\nProgram has been finished.");
     }
 
     public static int getUserChoice() {

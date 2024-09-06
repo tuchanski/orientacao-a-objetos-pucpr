@@ -51,9 +51,9 @@ public class Sys {
                         [0] - Exit""");
     }
 
-    public Music findMusicByTitle(String title){
+    public Music findMusicByTitleAndAuthor(String title, String author){
         for (Music m : this.registeredMusics){
-            if (m.getName().equals(title)){
+            if (m.getName().equals(title) && m.getAuthor().equals(author)){
                 return m;
             }
         }
@@ -90,6 +90,7 @@ public class Sys {
             }
         }
         registeredMusics.add(music);
+        System.out.println("\nRegistered music [" + music.getName() + ", " + music.getAuthor() + "] successfully.");
     }
 
     public void addMusicToPlaylist(Music music, Playlist playlist) throws AlreadyRegisteredMusicException {
@@ -99,6 +100,7 @@ public class Sys {
     public void createPlaylist(User user){
         Playlist newPlaylist = new Playlist(user);
         registeredPlaylists.add(newPlaylist);
+        System.out.println("\nPlaylist created successfully. ID: " + newPlaylist.getId());
     }
 
     public List<Playlist> listPlaylists(User user){
@@ -118,7 +120,8 @@ public class Sys {
         Playlist chosenPlaylist = null;
 
         for (Playlist p : availablePlaylists){
-            System.out.println("ID: " + p.getId() + ", musics: " + p.getMusics());
+            System.out.println("Playlist ID: " + p.getId() + ", musics: ");
+            p.displayAvailableMusics();
         }
         System.out.print("\nChoose by ID: ");
         long chosenId = input.nextLong();
