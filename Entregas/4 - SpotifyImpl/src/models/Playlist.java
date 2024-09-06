@@ -37,6 +37,16 @@ public class Playlist {
         return musics;
     }
 
+    public void displayAvailableMusics(){
+        if (!musics.isEmpty()){
+            for (Music m : this.musics){
+                System.out.println(m.getName() + ", " + m.getAuthor());
+            }
+        } else {
+            System.out.println("Empty");
+        }
+    }
+
     public void addMusic(Music music) throws AlreadyRegisteredMusicException {
         for (Music m : this.musics){
             if (m.getId().equals(music.getId())){

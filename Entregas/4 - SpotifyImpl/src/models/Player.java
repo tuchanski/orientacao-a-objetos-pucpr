@@ -28,19 +28,21 @@ public class Player {
         }
     }
 
+
     public void startMusic(Music music) {
-        System.out.println("Playing: " + music.getName());
+        System.out.println("\nPlaying: " + music.getName() + " [" + music.getTime().toMinutes() + ":" + music.getTime().toSecondsPart() + "]");
         Duration musicDuration = music.getTime();
         playMusic(musicDuration);
     }
 
     private static void playMusic(Duration time) {
-        while (!time.isZero()) {
+        while (!time.isZero() && !time.isNegative()) {
             try {
                 status = MusicStatus.PLAYING;
                 Thread.sleep(1000);
-                System.out.print(time.toSeconds() + "sec... ");
-                time = time.minus(Duration.ofSeconds(1));
+                System.out.println("Playing... [" + time.toMinutes()+ ":" + time.toSecondsPart() + "]");
+                // 1 min per second!
+                time = time.minus(Duration.ofSeconds(60));
             } catch (InterruptedException e) {
                 status = MusicStatus.PAUSED;
                 System.out.println("The music has been stopped.");
@@ -48,9 +50,7 @@ public class Player {
             }
         }
 
-        if (time.isZero()) {
-            System.out.println("\nThe music has been finished.");
-            status = MusicStatus.IDLE;
-        }
+        System.out.println("\nThe music has been finished.");
+        status = MusicStatus.IDLE;
     }
 }

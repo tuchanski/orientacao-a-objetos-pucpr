@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Entregas/2 - BankAccount/2 - BankAccount.iml" filepath="$PROJECT_DIR$/Entregas/2 - BankAccount/2 - BankAccount.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Entregas/3 - School/3 - School.iml" filepath="$PROJECT_DIR$/Entregas/3 - School/3 - School.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Entregas/4 - SpotifyImpl/4 - SpotifyImpl.iml" filepath="$PROJECT_DIR$/Entregas/4 - SpotifyImpl/4 - SpotifyImpl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Entregas/Entregas.iml" filepath="$PROJECT_DIR$/Entregas/Entregas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/orientacao-a-objetos-pucpr.iml" filepath="$PROJECT_DIR$/.idea/orientacao-a-objetos-pucpr.iml" />
+    </modules>
+  </component>
+</project>
