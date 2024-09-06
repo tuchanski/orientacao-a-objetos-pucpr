@@ -17,8 +17,9 @@ public class UserMenuHandler {
                 case 1 -> MusicHandler.registerNewMusic(input, system);
                 case 2 -> system.createPlaylist(currentUser);
                 case 3 -> MusicHandler.addMusicToUserPlaylist(input, system, currentUser);
-                case 4 -> MusicHandler.playUserMusic(system, currentUser);
+                case 4 -> MusicHandler.deleteMusicFromUserPlaylist(input, system, currentUser);
                 case 5 -> MusicHandler.listUserPlaylists(system, currentUser);
+                case 6 -> MusicHandler.playUserMusic(system, currentUser);
                 case 0 -> userMenuExit = true;
                 default -> System.out.println("Invalid option.");
             }

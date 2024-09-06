@@ -46,8 +46,9 @@ public class Sys {
                         \n[1] - Register new Music
                         [2] - Create Playlist
                         [3] - Add music to Playlist
-                        [4] - Play Now
+                        [4] - Delete music from Playlist
                         [5] - List Playlists
+                        [6] - Play Now
                         [0] - Exit""");
     }
 
@@ -95,6 +96,10 @@ public class Sys {
 
     public void addMusicToPlaylist(Music music, Playlist playlist) throws AlreadyRegisteredMusicException {
         playlist.addMusic(music);
+    }
+
+    public void deleteMusicFromPlaylist(Music music, Playlist playlist) throws NonRegisteredMusicException {
+        playlist.removeMusic(music);
     }
 
     public void createPlaylist(User user){

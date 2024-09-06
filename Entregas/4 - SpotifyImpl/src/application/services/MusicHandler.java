@@ -18,7 +18,7 @@ public class MusicHandler {
         String artist = input.nextLine();
         System.out.print("\nEnter genre: ");
         String genre = input.nextLine().toUpperCase();
-        System.out.print("\nEnter duration (min:sec): ");
+        System.out.print("\nEnter duration [min:sec]: ");
         String duration = input.nextLine();
 
         Music newMusic = new Music(title, artist, genre, duration);
@@ -49,7 +49,38 @@ public class MusicHandler {
                 if (chosenPlaylist != null) {
                     try {
                         system.addMusicToPlaylist(musicToAdd, chosenPlaylist);
+                        System.out.println("\nAdded music " + musicToAdd.getName() + "to chosen playlist successfully.");
                     } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                } else {
+                    System.out.println("\nInvalid choice.");
+                }
+            }
+        } else {
+            System.out.println("\nMusic not found.");
+        }
+    }
+
+    public static void deleteMusicFromUserPlaylist(Scanner input, Sys system, User currentUser) {
+        getAvailableMusics(system);
+        System.out.print("\nEnter the title of the music to be deleted: ");
+        String musicTitle = input.nextLine().toUpperCase();
+        System.out.print("\nEnter the name of the author of music to be deleted: ");
+        String authorName = input.nextLine().toUpperCase();
+        Music musicToDelete = system.findMusicByTitleAndAuthor(musicTitle, authorName);
+
+        if (musicToDelete != null) {
+            List<Playlist> playlists = system.listPlaylists(currentUser);
+            if (playlists.isEmpty()) {
+                System.out.println("\nYou have no playlists.");
+            } else {
+                Playlist chosenPlaylist = choosePlaylist(input, playlists);
+                if (chosenPlaylist != null) {
+                    try {
+                        system.deleteMusicFromPlaylist(musicToDelete, chosenPlaylist);
+                        System.out.println("\nDeleted music " + musicToDelete.getName() + "to chosen playlist successfully.");
+                    } catch (Exception e){
                         System.out.println(e.getMessage());
                     }
                 } else {
@@ -92,7 +123,7 @@ public class MusicHandler {
     }
 
     private static Playlist choosePlaylist(Scanner input, List<Playlist> playlists) {
-        System.out.println("\nChoose a playlist to add:");
+        System.out.println("\nChoose a playlist:");
         for (Playlist playlist : playlists) {
             System.out.println("ID: " + playlist.getId());
         }
