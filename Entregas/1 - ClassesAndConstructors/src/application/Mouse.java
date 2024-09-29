@@ -1,4 +1,4 @@
-package src;
+package src.application;
 
 public class Mouse {
 
