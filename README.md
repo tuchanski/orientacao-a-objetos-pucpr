@@ -5,7 +5,7 @@ Este repositório foi criado para guardar as entregas da matéria "Programação
 
 ## Tecnologias Utilizadas
 
-- **Java** para a implementação dos conceitos de POO.
+- **Java**
 
 ## Exemplos Práticos
 
