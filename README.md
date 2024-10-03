@@ -20,7 +20,7 @@ O repositório inclui exemplos práticos de implementação dos seguintes concei
 
 ## Estrutura do Repositório
 
-- As entregas são salvas dentro do diretório "Entregas", onde são salvas como projetos individuais.
+- As entregas são salvas dentro do diretório "Entregas", onde são guardadas como projetos desacoplados.
 
 ```plaintext
 orientacao-a-objetos-pucpr/
