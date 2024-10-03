@@ -28,10 +28,6 @@ public class Ebook extends ItemBibliotecaDigital implements Baixavel {
         System.out.printf("\n%s has been downloaded successfully.", this.getTitle());
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
